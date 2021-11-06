@@ -17,7 +17,7 @@
     <v-card class="overflow-hidden">
       <v-app-bar
         absolute
-        color="#6A76AB"
+        color="#243d44"
         dark
         shrink-on-scroll
         prominent
@@ -28,9 +28,10 @@
         <template v-slot:img="{ props }">
           <v-img
             v-bind="props"
-            gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
+            gradient="to right, #1f4037, #99f2c8"
           ></v-img>
         </template>
+        
   
         <v-app-bar-title>Welcome!</v-app-bar-title>
   
@@ -62,10 +63,10 @@
       <v-sheet
         id="scrolling-techniques-3"
         class="overflow-y-auto"
-        max-height="150"
+        max-height="710"
       >
-        <v-container style="height: 1000px;"></v-container>
-      </v-sheet>
+        <v-container style="height: 200px;"></v-container>
+ 
 
       <v-tabs-items v-model="tabs">
         <v-tab-item>
@@ -118,10 +119,10 @@
             </section>
           </v-card>
         </v-tab-item>
-
+      
         <v-tab-item>
-          <v-card flat>
-            <section id="features">
+          <v-card flat >
+            <section id="features" >
               <div class="py-12 "></div>
       
               <v-container class="text-center ">
@@ -136,51 +137,40 @@
                   <v-divider></v-divider>
                 </v-responsive>
                 
-                <v-card
-                  class="mx-auto"
-                  max-width="344"
+                <v-row>
+                  <v-col
+                    v-for="({ title, subtitle, text, href }, i) in features"
+                    :key="i"
+                    cols="12"
+                    sm="4"
                   >
-                  <v-img
-                    src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-                    height="200px"
-                  ></v-img>
-
-                  <v-card-title>
-                    Top western road trips
-                  </v-card-title>
-
-                  <v-card-subtitle>
-                    1,000 miles of wonder
-                  </v-card-subtitle>
-
-                  <v-card-actions>
-                    <v-btn
-                      color="orange lighten-2"
-                      text
+                    <v-card
+                    class="mx-auto"
+                    max-width="344"
+          
                     >
-                      Explore
-                    </v-btn>
-
-                    <v-spacer></v-spacer>
-
-                    <v-btn
-                      icon
-                      @click="show = !show"
-                    >
-                      <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                    </v-btn>
-                  </v-card-actions>
-
-                  <v-expand-transition>
-                    <div v-show="show">
-                      <v-divider></v-divider>
-
                       <v-card-text>
-                        I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+                        <p class="text-h4 text--primary">
+                          {{ title }}
+                        </p>
+                        <p> {{ subtitle }} </p>
+                        <div class="text--primary">
+                          {{ text }}
+                        </div>
                       </v-card-text>
-                    </div>
-                  </v-expand-transition>
-                </v-card>
+                      <v-card-actions>
+                        <v-btn
+                          text
+                          color="orange lighten-2"
+                          :href='href'
+                          target="_blank"
+                        >
+                          Where I learn it
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-col>
+                </v-row>
                 
               </v-container>
     
@@ -205,38 +195,75 @@
       
                   <v-divider></v-divider>
                 </v-responsive>
-      
-                <v-card
-                class="mx-auto"
-                max-width="344"
-                >
-                  <v-card-text>
-                    <div>Word of the Day</div>
-                    <p class="text-h4 text--primary">
-                      be•nev•o•lent
-                    </p>
-                    <p>adjective</p>
-                    <div class="text--primary">
-                      well meaning and kindly.<br>
-                      "a benevolent smile"
-                    </div>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-btn
-                      text
-                      color="deep-purple accent-4"
-                    >
-                      Learn More
-                    </v-btn>
-                  </v-card-actions>
-                </v-card>
+                
+
+                <v-row >
+                  <v-col
+                    v-for="({ title, subtitle, text, href, src }, i) in blog"
+                    :key="i"
+                    cols="12"
+                    sm="4"
+                    md="4"
+                  >
+                    <v-card
+                      class="mx-auto"
+                      max-width="344"
+          
+                      >
+                      <v-img
+                        :src="src"
+                        height="200px"
+                      ></v-img>
+
+                      <v-card-title>
+                        {{ title }}
+                      </v-card-title>
+
+                      <v-card-subtitle>
+                        {{ subtitle }} 
+                      </v-card-subtitle>
+
+                      <v-card-actions>
+                        <v-btn
+                          color="orange lighten-2"
+                          text
+                          :href='href'
+                          target="_blank"
+                        >
+                          Explore
+                        </v-btn>
+
+                        <v-spacer></v-spacer>
+
+                        <v-btn
+                          icon
+                          @click="show = !show"
+                        >
+                          <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                        </v-btn>
+                      </v-card-actions>
+
+                      <v-expand-transition>
+                        <div v-show="show">
+                          <v-divider></v-divider>
+
+                          <v-card-text>
+                            {{ text }}
+                          </v-card-text>
+                        </div>
+                      </v-expand-transition>
+                    </v-card>
+                  </v-col>
+                </v-row>
+
+                
               </v-container>
       
               <div class="py-12"></div>
             </section>
           </v-card>
         </v-tab-item>
-        
+        </v-sheet>
       </v-tabs-items>
 
     </v-card>
@@ -244,11 +271,14 @@
     <v-footer
       dark
       padless
+      fixed
+      id='footer'
       >
       <v-card
         class="flex"
         flat
         tile
+        color='#243d44'
         >
         <v-card-title class="teal" >
           <strong class="subheading">Contact me --> </strong>
@@ -256,9 +286,11 @@
 
 
           <v-btn
-            v-for="icon in icons"
-            :key="icon"
+            v-for="({ icon, href }, i) in footer"
+            :key="i"
             class="mx-4"
+            :href='href'
+            target="_blank"
             dark
             icon
           >
@@ -298,14 +330,66 @@
     data () {
       return {
         show: false,
-        icons: [
-        'mdi-telegram',
-        'mdi-gmail',
-        'mdi-linkedin',
+        footer: [
+          {
+            icon: 'mdi-telegram',
+            href: 'https://t.me/remch13'
+          },
+          {
+            icon: 'mdi-gmail',
+            href: 'mailto:remch13@gmail.com'
+          },
+          {
+            icon: 'mdi-linkedin',
+            href: 'https://www.linkedin.com/in/rafael-mejia-chevez-820494176'
+          }
         ],
         tabs: null,
         items: [
           'About me', 'Skills', 'Proyects',
+        ],
+        features: [
+          {
+            title: 'HTML/CSS',
+            subtitle: 'Through freecodecamp since 2020',
+            text: 'Responsive web design, css flexbox, css grid, accessibility ',
+            href: 'https://www.freecodecamp.org/'
+          },
+          {
+            title: 'Vue JS',
+            subtitle: 'Through vuemastery since 2020',
+            text: 'Components, vuex managment state, axios, vue-router',
+            href: 'https://www.vuemastery.com/'
+          },
+          {
+            title: 'Vuetify',
+            subtitle: 'Through vuemastery since 2021',
+            text: 'UI components, material design',
+            href: 'https://www.vuetifyjs.com/'
+          },
+        ],
+        blog: [
+          {
+            title: 'Quality Fountain Service',
+            subtitle: 'First real proyect',
+            text: 'This was my first proyect that I made and deployed for a client. It includes modern and responsive design, components and theme gotten from vuetify, hosting and domain name from netlify.',
+            href: 'https://www.qualityfountainservice.com/',
+            src: 'https://images.pexels.com/photos/821044/pexels-photo-821044.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+          },
+          {
+            title: 'Comming soon',
+            subtitle: '#',
+            text: '#',
+            href: '#',
+            src: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg'
+          },
+          {
+            title: 'Comming soon',
+            subtitle: '#',
+            text: '#',
+            href: '#',
+            src: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg'
+          },
         ],
       }
     },
