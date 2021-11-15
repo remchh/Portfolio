@@ -33,17 +33,18 @@
         </template>
         
   
-        <v-app-bar-title>Welcome!</v-app-bar-title>
+        <v-app-bar-title>
+          Welcome!
+          <v-switch
+            v-model="$vuetify.theme.dark"
+            label="Dark mode"
+            inset
+            color="accent"
+            class="mt-10 ml-5">
+          </v-switch>
+        </v-app-bar-title>
   
         <v-spacer></v-spacer>
-
-        <v-switch
-          v-model="$vuetify.theme.dark"
-          label="Dark mode"
-          inset
-          color="accent"
-          class="mt-16">
-        </v-switch>
   
         <template v-slot:extension>
           <v-tabs
@@ -97,7 +98,7 @@
                   class="elevation-12 mb-12"
                   size="128"
                 >
-                  <v-img src="#"></v-img>
+                  <v-img src="./aboutmee.jpeg"></v-img>
                 </v-avatar>
       
                 <div></div>
@@ -126,7 +127,7 @@
               <div class="py-12 "></div>
       
               <v-container class="text-center ">
-                <h2 class="display-2 font-weight-bold mb-3">SKILLS</h2>
+                <h2 class="display-2 font-weight-bold mb-3 animate__animated animate__flipInX">SKILLS</h2>
       
                 <v-responsive
                   class="mx-auto mb-12"
@@ -185,7 +186,7 @@
               <div class="py-12"></div>
       
               <v-container>
-                <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center">Proyects</h2>
+                <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center animate__animated animate__flipInX">Proyects</h2>
       
                 <v-responsive
                   class="mx-auto mb-12"
@@ -358,7 +359,7 @@
           {
             title: 'Vue JS',
             subtitle: 'Through vuemastery since 2020',
-            text: 'Components, vuex managment state, axios, vue-router',
+            text: 'Components, vuex, axios, vue-router',
             href: 'https://www.vuemastery.com/'
           },
           {
