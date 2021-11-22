@@ -32,23 +32,25 @@
           ></v-img>
         </template>
         
-  
-        <v-app-bar-title>
-          Welcome!
-          <v-switch
-            v-model="$vuetify.theme.dark"
-            label="Dark mode"
-            inset
-            color="accent"
-            class="mt-10 ml-5">
-          </v-switch>
-        </v-app-bar-title>
-  
-        <v-spacer></v-spacer>
-  
+          <v-app-bar-title>
+            Welcome!
+            <v-responsive :width="$vuetify.breakpoint.xs ? 340 : 740">
+              <div class=' d-flex flex-row-reverse mt-10' >
+                <v-switch
+                  v-model="$vuetify.theme.dark"
+                  label="Dark mode"
+                  inset
+                  color="accent"
+                  
+                  >
+                </v-switch>
+              </div>
+            </v-responsive>
+          </v-app-bar-title>
+
         <template v-slot:extension>
           <v-tabs
-            v-model="tabs"
+            v-model="tabs"   
           >
             <v-tab
               v-for="item in items"
@@ -56,8 +58,8 @@
           >
               {{ item }}
             </v-tab>
-          </v-tabs>
         </template>
+
 
       </v-app-bar>
 
@@ -91,7 +93,7 @@
                   class="mx-auto title font-weight-light mb-8"
                   max-width="720"
                 >
-                I am a telecommunication enginner, passionate of web development, I have been learning and developed some proyects for about one year, getting my skills trought freecodecamp and vue mastery. I consider myself passionate of new technologies, always learning new stuff. God bless you!
+                I am a telecommunication enginner, passionate of web development, I have been learning and developed some projects for about one year, getting my skills trought freecodecamp and vue mastery. I consider myself passionate of new technologies, always learning new stuff. God bless you!
                 </v-responsive>
       
                 <v-avatar
@@ -186,7 +188,7 @@
               <div class="py-12"></div>
       
               <v-container>
-                <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center animate__animated animate__flipInX">Proyects</h2>
+                <h2 class="display-2 font-weight-bold mb-3 text-uppercase text-center animate__animated animate__flipInX">Projects</h2>
       
                 <v-responsive
                   class="mx-auto mb-12"
@@ -284,21 +286,23 @@
         <v-card-title class="teal" >
           <strong class="subheading">Contact me --> </strong>
 
-
-
-          <v-btn
-            v-for="({ icon, href }, i) in footer"
-            :key="i"
-            class="mx-4"
-            :href='href'
-            target="_blank"
-            dark
-            icon
-          >
-            <v-icon size="24px">
-              {{ icon }}
-            </v-icon>
-          </v-btn>
+          <v-responsive >
+            <div class="d-flex flex-row-reverse" >
+              <v-btn
+                v-for="({ icon, href }, i) in footer"
+                :key="i"
+                class="mx-4"
+                :href='href'
+                target="_blank"
+                dark
+                icon
+              >
+                <v-icon size="24px" >
+                  {{ icon }}
+                </v-icon>
+              </v-btn>
+            </div>
+          </v-responsive>
         </v-card-title>
 
         <v-card-text class="py-2 white--text text-center">
@@ -309,6 +313,11 @@
   </v-app>
  </div>
  
+<style>
+
+</style>
+
+
  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 
@@ -347,7 +356,7 @@
         ],
         tabs: null,
         items: [
-          'About me', 'Skills', 'Proyects',
+          'About me', 'Skills', 'Projects',
         ],
         features: [
           {
@@ -372,20 +381,20 @@
         blog: [
           {
             title: 'Quality Fountain Service',
-            subtitle: 'First real proyect',
-            text: 'This was my first proyect that I made and deployed for a client. It includes modern and responsive design, components and theme gotten from vuetify, hosting and domain name from netlify.',
+            subtitle: 'First real project',
+            text: 'This was my first project that I made and deployed for a client. It includes modern and responsive design, components and theme gotten from vuetify, hosting and domain name from netlify.',
             href: 'https://www.qualityfountainservice.com/',
             src: 'https://images.pexels.com/photos/821044/pexels-photo-821044.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
           },
           {
-            title: 'Comming soon',
+            title: 'Coming soon',
             subtitle: '#',
             text: '#',
             href: '#',
             src: 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg'
           },
           {
-            title: 'Comming soon',
+            title: 'Coming soon',
             subtitle: '#',
             text: '#',
             href: '#',
